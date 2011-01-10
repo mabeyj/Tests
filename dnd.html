@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Drag and Drop Demo</title>
+
+		<style type='text/css'>
+			#drop { border: 1px solid #000; min-height: 100px; }
+		</style>
+
+		<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.4.4/jquery.min.js'></script>
+		<script type='text/javascript'>
+			$(function()
+			{
+				$('#drop')
+					.bind('dragenter', function(event)
+					{
+						// Cancel event to accept what was dropped
+						event.preventDefault();
+					})
+					.bind('dragover', function(event)
+					{
+						// Do nothing to use default behaviour
+						event.preventDefault();
+					})
+					.bind('drop', function(event)
+					{
+						temp = event.originalEvent;
+						console.log(event.originalEvent);
+						var file =  event.originalEvent.dataTransfer.files[0];
+
+						$('#drop').html('Dropped file contents:');
+
+						if (file.type == 'text/plain')
+						{
+							$('#drop').append($('<pre>', {text: file.getAsText('utf-8')}));
+						}
+						else if (file.type == 'image/png' || file.type == 'image/jpeg')
+						{
+							$('#drop').append($('<img>', {src: file.getAsDataURL()}));
+						}
+						else
+						{
+							$('#drop').append($('<p>', {text: 'Unknown type: ' + file.type}));
+						}
+
+						event.preventDefault();
+					});
+			});
+		</script>
+	</head>
+
+	<body>
+		<p>Drag your file (text, PNG, or JPG) here:</p>
+
+		<div id='drop'></div>
+	</body>
+</html>
