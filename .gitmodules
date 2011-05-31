@@ -1,6 +1,6 @@
-[submodule "system"]
-	path = system
-	url = https://github.com/kohana/core.git
-[submodule "modules/mongodb-php-odm"]
-	path = modules/mongodb-php-odm
+[submodule "mongodb-php-odm/profiler_binary_data/system"]
+	path = mongodb-php-odm/profiler_binary_data/system
+	url = git://github.com/kohana/core.git
+[submodule "mongodb-php-odm/profiler_binary_data/modules/mongodb-php-odm"]
+	path = mongodb-php-odm/profiler_binary_data/modules/mongodb-php-odm
 	url = git://github.com/colinmollenhour/mongodb-php-odm.git
